@@ -85,7 +85,7 @@ public class ShangpinServlet extends HttpServlet {
 		StringBuffer errors = new StringBuffer("");
 		
 		if(id == null || id.trim().equals("")){
-			errors.append("��Ʒ������Ϊ��");			
+			errors.append("商品名不能为空");			
 		}
 		
 		if(!errors.toString().equals("")){
@@ -93,7 +93,7 @@ public class ShangpinServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/OnlineShop/home/fahuo.jsp");
 		}
 		else {
-			errors.append("�����ɹ�");
+			errors.append("发货成功");
 			request.setAttribute("errors", errors);
 			bookService.updatedingdan(id);
 			request.getRequestDispatcher("/home/fahuo.jsp").forward(request, response);
@@ -132,7 +132,7 @@ public class ShangpinServlet extends HttpServlet {
 			}
 		}
 		if(address == null || address.trim().equals("")){
-			errors.append("��ַ����Ϊ��");			
+			errors.append("地址不能为空");			
 		}
 		if(!errors.toString().equals("")){
 			request.setAttribute("errors", errors);
@@ -220,19 +220,19 @@ public class ShangpinServlet extends HttpServlet {
 		StringBuffer errors = new StringBuffer("");
 		
 		if(name == null || name.trim().equals("")){
-			errors.append("��Ʒ������Ϊ��");			
+			errors.append("商品名不能为空");			
 		}
 		if(price == null || price.trim().equals("")){
-			errors.append("�۸���Ϊ��");			
+			errors.append("价格不能为空");			
 		}
 		if(salesnum == null || salesnum.trim().equals("")){
-			errors.append("����������Ϊ��");			
+			errors.append("销售数不能为空");			
 		}
 		if(storenum == null || storenum.trim().equals("")){
-			errors.append("��治��Ϊ��");			
+			errors.append("库存不能为空");			
 		}
 		if(kind == null || kind.trim().equals("")){
-			errors.append("���಻��Ϊ��");			
+			errors.append("种类不能为空");			
 		}
 		
 		if(!errors.toString().equals("")){
@@ -240,7 +240,7 @@ public class ShangpinServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/OnlineShop/home/insertshangpin.jsp");
 		}
 		else {
-			errors.append("�����Ʒ�ɹ�");
+			errors.append("添加商品成功");
 			request.setAttribute("errors", errors);
 			bookService.insertshangpin(name, price, salesnum, storenum, kind);
 			request.getRequestDispatcher("/home/insertshangpin.jsp").forward(request, response);
@@ -327,14 +327,14 @@ public class ShangpinServlet extends HttpServlet {
 		StringBuffer errors = new StringBuffer("");
 		
 		if(id == null || id.trim().equals("")){
-			errors.append("��Ų���Ϊ��");			
+			errors.append("编号不能为空");			
 		}
 		
 		if(!errors.toString().equals("")){
 			response.sendRedirect("http://localhost:8080/OnlineShop/home/deleteshangpin.jsp");
 		}
 		else {
-			errors.append("ɾ����Ʒ�ɹ�");
+			errors.append("删除商品成功");
 			request.setAttribute("errors", errors);
 			bookService.deleteshangpin(id);
 			request.getRequestDispatcher("/home/deleteshangpin.jsp").forward(request, response);
@@ -352,32 +352,32 @@ public class ShangpinServlet extends HttpServlet {
 		
 		StringBuffer errors = new StringBuffer("");
 		if(id == null || id.trim().equals("")){
-			errors.append("��Ʒ������Ϊ��");			
+			errors.append("商品编号不能为空");			
 		}
 		if(name == null || name.trim().equals("")){
-			errors.append("��Ʒ������Ϊ��");			
+			errors.append("商品名不能为空");			
 		}
 		if(price == null || price.trim().equals("")){
-			errors.append("�۸���Ϊ��");			
+			errors.append("价格不能为空");			
 		}
 		if(date == null || date.trim().equals("")){
-			errors.append("�۸���Ϊ��");			
+			errors.append("价格不能为空");			
 		}
 		if(salesnum == null || salesnum.trim().equals("")){
-			errors.append("����������Ϊ��");			
+			errors.append("销售数不能为空");			
 		}
 		if(storenum == null || storenum.trim().equals("")){
-			errors.append("��治��Ϊ��");			
+			errors.append("库存不能为空");			
 		}
 		if(kind == null || kind.trim().equals("")){
-			errors.append("���಻��Ϊ��");			
+			errors.append("种类不能为空");			
 		}
 		
 		if(!errors.toString().equals("")){
 			response.sendRedirect("http://localhost:8080/OnlineShop/home/updateshangpin.jsp");
 		}
 		else {
-			errors.append("�޸���Ʒ��Ϣ�ɹ�");
+			errors.append("修改商品信息成功");
 			request.setAttribute("errors", errors);
 			bookService.updateshangpin(id, name, price, date, salesnum, storenum, kind);
 			request.getRequestDispatcher("/home/updateshangpin.jsp").forward(request, response);
@@ -404,7 +404,7 @@ public class ShangpinServlet extends HttpServlet {
 		
 		Account account = accountService.getAccount(Integer.parseInt(accountId));
 		if(cart.getTotalMoney() > account.getBalance()){
-			errors.append("����!");
+			errors.append("余额不足!");
 		}
 		
 		return errors;
@@ -441,7 +441,7 @@ public class ShangpinServlet extends HttpServlet {
 		
 		StringBuffer errors2 = new StringBuffer("");
 		if(!flag){
-			errors2.append("�û������˺Ų�ƥ��");
+			errors2.append("用户名和账号不匹配");
 		}
 		
 		return errors2;
@@ -452,11 +452,11 @@ public class ShangpinServlet extends HttpServlet {
 		StringBuffer errors = new StringBuffer("");
 		
 		if(username == null || username.trim().equals("")){
-			errors.append("�ֻ��Ų���Ϊ��");
+			errors.append("手机号不能为空");
 		}
 		
 		if(accountId == null || accountId.trim().equals("")){
-			errors.append("���벻��Ϊ��");			
+			errors.append("密码不能为空");			
 		}
 		
 		return errors;
